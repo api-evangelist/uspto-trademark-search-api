@@ -1,6 +1,9 @@
 # USPTO Trademark Search API (uspto-trademark-search-api)
 Instant trademark search. Check if a trademark keyword is available, or search trademarks, or owner information from United States Patent and Trademark Office. Updated Daily. The USPTO Trademark API helps you obtain trademark & service mark data in an efficient and comprehensive manner. Easily search for active marks & retrieve data pertaining to specific marks, such as the mark's name, serial and registration numbers, its status, owner information, and much more. Conduct keyword searches, scan a wide range of services, check mark availability, identify expiring trademarks, perform serial number, owner, and classification searches, and more.
 
+
+**URL:** [Visit APIs.json URL](https://pastebin.com/raw/v19psQ4J)
+
 ## Scope
 
 - **Type:** Collection 
