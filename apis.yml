@@ -3,11 +3,11 @@ apis:
   - aid: uspto-trademark-search-api:uspto-trademark-search-api
     name: USPTO Trademark Search API Endpoints
     tags:
+      - Brand Protection
+      - Data Retrieval
+      - Legal Research
       - Trademark Search
       - USPTO Data
-      - Brand Protection
-      - Legal Research
-      - Data Retrieval
     image: >-
       https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
     baseURL: https://uspto-trademark.p.rapidapi.com
@@ -25,8 +25,7 @@ apis:
         type: Pricing
       - url: https://medium.com/p/71274363605b
         type: Blog
-        description: USPTO Trademark API — Search trademark & owner database — 
-          part 1
+        description: USPTO Trademark API — Search trademark & owner database — part 1
       - url: https://medium.com/p/19efc7e1cc6
         type: Blog
         description: >-
@@ -46,15 +45,15 @@ apis:
       batch processing and pagination.
 name: USPTO Trademark Search API
 tags:
-  - Trademark
-  - USPTO
+  - Brand
+  - Business
+  - Data
+  - Government Data
+  - Intellectual Property
   - Legal
   - Search
-  - Intellectual Property
-  - Government Data
-  - Business
-  - Brand
-  - Data
+  - Trademark
+  - USPTO
 type: Collection
 image: >-
   https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
