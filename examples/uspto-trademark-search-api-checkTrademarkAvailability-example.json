@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkAvailable/novabrand",
+    "headers": {
+      "X-RapidAPI-Key": "your-rapidapi-key",
+      "X-RapidAPI-Host": "uspto-trademark.p.rapidapi.com"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "keyword": "novabrand",
+      "available": true,
+      "conflictingMarks": []
+    }
+  }
+}

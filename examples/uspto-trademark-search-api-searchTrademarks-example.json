@@ -1,0 +1,55 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkSearch/apple/active",
+    "headers": {
+      "X-RapidAPI-Key": "your-rapidapi-key",
+      "X-RapidAPI-Host": "uspto-trademark.p.rapidapi.com"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "count": 3,
+      "page": 1,
+      "items": [
+        {
+          "serialNumber": "73198100",
+          "registrationNumber": "1114384",
+          "wordMark": "APPLE",
+          "status": "Registered",
+          "statusCode": "700",
+          "filingDate": "1978-12-28",
+          "registrationDate": "1980-01-27",
+          "ownerName": "Apple Inc.",
+          "goodsAndServices": "Computers and computer programs; namely, electronic spreadsheets",
+          "internationalClasses": [9]
+        },
+        {
+          "serialNumber": "76657434",
+          "registrationNumber": "3307912",
+          "wordMark": "APPLE",
+          "status": "Registered",
+          "statusCode": "700",
+          "filingDate": "2005-03-29",
+          "registrationDate": "2007-10-09",
+          "ownerName": "Apple Inc.",
+          "goodsAndServices": "Computer hardware; portable media players; mobile phones",
+          "internationalClasses": [9]
+        },
+        {
+          "serialNumber": "85116755",
+          "registrationNumber": "4103087",
+          "wordMark": "APPLE",
+          "status": "Registered",
+          "statusCode": "700",
+          "filingDate": "2010-09-02",
+          "registrationDate": "2012-02-28",
+          "ownerName": "Apple Inc.",
+          "goodsAndServices": "Retail store services featuring computers, consumer electronics, and related accessories",
+          "internationalClasses": [35]
+        }
+      ]
+    }
+  }
+}

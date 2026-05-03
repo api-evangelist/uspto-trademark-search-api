@@ -1,0 +1,149 @@
+{
+  "name": "USPTO Trademark",
+  "description": "Core data structure for a USPTO trademark record",
+  "type": "object",
+  "source": "USPTO Trademark Search API",
+  "fields": [
+    {
+      "name": "serialNumber",
+      "type": "string",
+      "format": "\\d{8}",
+      "required": true,
+      "description": "Unique 8-digit USPTO serial number assigned at filing"
+    },
+    {
+      "name": "registrationNumber",
+      "type": "string | null",
+      "required": false,
+      "description": "Registration number assigned upon trademark registration"
+    },
+    {
+      "name": "wordMark",
+      "type": "string",
+      "required": true,
+      "description": "Textual content of the trademark"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": true,
+      "description": "Current status: Registered, Pending, Abandoned, Expired",
+      "allowedValues": ["Registered", "Pending", "Abandoned", "Expired", "Cancelled"]
+    },
+    {
+      "name": "statusCode",
+      "type": "string",
+      "required": false,
+      "description": "Internal USPTO status code (e.g., 700 = Registered, 630 = Pending)"
+    },
+    {
+      "name": "filingDate",
+      "type": "string",
+      "format": "date (YYYY-MM-DD)",
+      "required": true,
+      "description": "Date the trademark application was submitted to USPTO"
+    },
+    {
+      "name": "registrationDate",
+      "type": "string | null",
+      "format": "date (YYYY-MM-DD)",
+      "required": false,
+      "description": "Date the trademark was officially registered"
+    },
+    {
+      "name": "ownerName",
+      "type": "string",
+      "required": true,
+      "description": "Legal name of the trademark owner"
+    },
+    {
+      "name": "ownerAddress",
+      "type": "string",
+      "required": false,
+      "description": "Street address of the owner"
+    },
+    {
+      "name": "ownerCity",
+      "type": "string",
+      "required": false,
+      "description": "City of the owner's address"
+    },
+    {
+      "name": "ownerState",
+      "type": "string",
+      "required": false,
+      "description": "State or province of the owner's address"
+    },
+    {
+      "name": "ownerCountry",
+      "type": "string",
+      "format": "ISO 3166-1 alpha-2",
+      "required": false,
+      "description": "Country of the owner's address"
+    },
+    {
+      "name": "goodsAndServices",
+      "type": "string",
+      "required": false,
+      "description": "Description of goods/services covered by the trademark"
+    },
+    {
+      "name": "internationalClasses",
+      "type": "array<integer>",
+      "required": false,
+      "description": "International Nice Classification (NCL) class numbers (1-45)"
+    },
+    {
+      "name": "markType",
+      "type": "string",
+      "required": false,
+      "description": "Mark type: STANDARD_CHARACTER, DESIGN, SOUND, COLOR, THREE_DIMENSIONAL",
+      "allowedValues": ["STANDARD_CHARACTER", "DESIGN", "SOUND", "COLOR", "THREE_DIMENSIONAL"]
+    },
+    {
+      "name": "firstUsedDate",
+      "type": "string | null",
+      "format": "date (YYYY-MM-DD)",
+      "required": false,
+      "description": "First use date of the mark anywhere"
+    },
+    {
+      "name": "firstUsedInCommerceDate",
+      "type": "string | null",
+      "format": "date (YYYY-MM-DD)",
+      "required": false,
+      "description": "First use date of the mark in commerce"
+    },
+    {
+      "name": "prosecutionHistory",
+      "type": "array<ProsecutionEvent>",
+      "required": false,
+      "description": "Chronological list of USPTO actions taken on the application",
+      "items": {
+        "name": "ProsecutionEvent",
+        "type": "object",
+        "fields": [
+          {
+            "name": "date",
+            "type": "string",
+            "format": "date (YYYY-MM-DD)",
+            "required": true,
+            "description": "Date of the action"
+          },
+          {
+            "name": "code",
+            "type": "string",
+            "required": true,
+            "description": "USPTO action code"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": true,
+            "description": "Human-readable description of the action"
+          }
+        ]
+      }
+    }
+  ]
+}

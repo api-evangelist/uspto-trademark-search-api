@@ -1,0 +1,48 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkBySerial/88123456",
+    "headers": {
+      "X-RapidAPI-Key": "your-rapidapi-key",
+      "X-RapidAPI-Host": "uspto-trademark.p.rapidapi.com"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "serialNumber": "88123456",
+      "registrationNumber": null,
+      "wordMark": "NOVACORP",
+      "status": "Pending",
+      "statusCode": "630",
+      "filingDate": "2018-09-12",
+      "registrationDate": null,
+      "ownerName": "NovaCorp LLC",
+      "ownerAddress": "123 Main St",
+      "ownerCity": "Austin",
+      "ownerState": "TX",
+      "ownerCountry": "US",
+      "ownerPostalCode": "78701",
+      "correspondentName": "Jane Smith, Esq.",
+      "correspondentAddress": "456 Legal Ave, Austin TX 78702",
+      "goodsAndServices": "Software as a service (SaaS) for project management",
+      "internationalClasses": [42],
+      "markType": "STANDARD_CHARACTER",
+      "distinctivenessClaim": null,
+      "firstUsedDate": "2017-01-01",
+      "firstUsedInCommerceDate": "2017-03-15",
+      "prosecutionHistory": [
+        {
+          "date": "2018-09-12",
+          "code": "NWOS",
+          "description": "New application entered in TRAM"
+        },
+        {
+          "date": "2019-01-08",
+          "code": "CNOF",
+          "description": "Confirmed, filed"
+        }
+      ]
+    }
+  }
+}

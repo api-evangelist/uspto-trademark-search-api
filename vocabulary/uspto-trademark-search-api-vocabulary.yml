@@ -1,0 +1,139 @@
+aid: uspto-trademark-search-api-vocabulary
+name: USPTO Trademark Search API Vocabulary
+description: >-
+  Domain vocabulary and taxonomy for the USPTO Trademark Search API covering
+  trademark application concepts, status codes, mark types, Nice Classification
+  classes, prosecution process terminology, and brand protection workflows.
+version: '1.0'
+created: '2026-05-03'
+modified: '2026-05-03'
+
+categories:
+  - name: Trademark Application Concepts
+    description: Core concepts in the trademark application process
+    terms:
+      - term: Serial Number
+        definition: Unique 8-digit identifier assigned by the USPTO when a trademark application is filed
+        aliases: [Application Number, Filing Number]
+      - term: Registration Number
+        definition: Identifier assigned by the USPTO when a trademark is successfully registered
+        aliases: [Reg Number]
+      - term: Word Mark
+        definition: The textual component of a trademark as it appears in the USPTO database
+        aliases: [Mark Text, Literal Element]
+      - term: Filing Date
+        definition: The date on which the trademark application was submitted to the USPTO
+      - term: Registration Date
+        definition: The date on which the trademark was officially registered by the USPTO
+      - term: First Use Date
+        definition: The date the trademark was first used anywhere, including in commerce
+        aliases: [Date of First Use]
+      - term: First Use in Commerce Date
+        definition: The date the trademark was first used in interstate commerce
+        aliases: [Date of First Use in Commerce]
+
+  - name: Trademark Status Values
+    description: Possible states of a trademark application or registration
+    terms:
+      - term: Registered
+        definition: The trademark has been approved and registered with the USPTO (status code 700)
+      - term: Pending
+        definition: The trademark application is under examination and has not yet been registered or refused
+      - term: Abandoned
+        definition: The trademark application was abandoned due to failure to respond to USPTO actions
+        aliases: [Lapsed]
+      - term: Expired
+        definition: A registered trademark whose renewal was not filed and it has lapsed
+      - term: Cancelled
+        definition: A registered trademark that was cancelled by the USPTO or by court order
+
+  - name: Mark Types
+    description: Categories of trademark marks recognized by the USPTO
+    terms:
+      - term: Standard Character Mark
+        definition: A trademark consisting only of letters, words, numerals, or any combination with no stylization
+        aliases: [Word Mark, Standard Characters]
+      - term: Design Mark
+        definition: A trademark that includes a logo, stylized text, or graphical element
+        aliases: [Logo Mark, Figurative Mark]
+      - term: Sound Mark
+        definition: A trademark consisting of a distinctive sound
+      - term: Color Mark
+        definition: A trademark where a specific color or color combination is the distinguishing feature
+      - term: Three Dimensional Mark
+        definition: A trademark consisting of a distinctive three-dimensional shape or configuration
+
+  - name: Nice Classification (NCL) Classes
+    description: International classification system for goods and services used in trademark registration
+    terms:
+      - term: Class 9
+        definition: Scientific, nautical, surveying, photographic, cinematographic, electrical/electronic apparatus; computers; software
+        aliases: [Technology Class, Software Class]
+      - term: Class 25
+        definition: Clothing, footwear, headgear
+        aliases: [Apparel Class]
+      - term: Class 35
+        definition: Advertising; business management; business administration; retail store services
+        aliases: [Business Services Class, Retail Class]
+      - term: Class 36
+        definition: Insurance; financial affairs; monetary affairs; real estate affairs
+        aliases: [Financial Services Class]
+      - term: Class 38
+        definition: Telecommunications services
+        aliases: [Telecom Class]
+      - term: Class 42
+        definition: Scientific and technological services; industrial analysis; design of software and hardware; SaaS
+        aliases: [IT Services Class, SaaS Class]
+      - term: Class 44
+        definition: Medical services; veterinary services; hygienic and beauty care for human beings or animals
+        aliases: [Healthcare Class]
+      - term: Class 45
+        definition: Legal services; security services; personal and social services rendered to individuals
+        aliases: [Legal Services Class]
+
+  - name: Prosecution Process Terms
+    description: Terms used in the USPTO trademark examination and prosecution process
+    terms:
+      - term: Prosecution History
+        definition: The complete record of correspondence and actions between an applicant and the USPTO during examination
+        aliases: [File History, TRAM History]
+      - term: Office Action
+        definition: A written communication from the USPTO examiner explaining objections or requirements for the application
+        aliases: [OA, Examiner's Response Required]
+      - term: Response to Office Action
+        definition: Applicant's written reply addressing USPTO examiner objections
+        aliases: [Response]
+      - term: Notice of Allowance
+        definition: USPTO communication indicating a trademark has been approved for registration
+        aliases: [NOA]
+      - term: Statement of Use
+        definition: Evidence filed showing the mark is being used in commerce (for intent-to-use applications)
+        aliases: [SOU]
+      - term: Intent to Use
+        definition: A trademark application basis indicating an intent to use the mark in commerce in the future
+        aliases: [ITU, 1(b) Basis]
+      - term: Use in Commerce
+        definition: A trademark application basis indicating the mark is already in use in interstate commerce
+        aliases: [1(a) Basis, Actual Use]
+      - term: Goods and Services Description
+        definition: The specific list of goods or services for which trademark protection is sought
+        aliases: [Identification of Goods and Services, G&S]
+      - term: Correspondent
+        definition: The attorney or agent authorized to receive USPTO correspondence for a trademark application
+
+  - name: Brand Protection Workflows
+    description: Common workflows using trademark search capabilities
+    terms:
+      - term: Trademark Clearance Search
+        definition: Research conducted before adopting a new brand name to identify potentially conflicting marks
+        aliases: [Pre-Filing Search, Clearance Search]
+      - term: Trademark Monitoring
+        definition: Ongoing surveillance of new trademark filings to detect potential infringement of existing marks
+        aliases: [Watch Service, Trademark Watch]
+      - term: Portfolio Analysis
+        definition: Review and assessment of all trademarks owned by a single entity
+        aliases: [Brand Portfolio Review]
+      - term: Competitive Intelligence
+        definition: Research into competitor trademark filings to understand their market positioning
+      - term: Due Diligence
+        definition: Comprehensive trademark research conducted as part of M&A or licensing transactions

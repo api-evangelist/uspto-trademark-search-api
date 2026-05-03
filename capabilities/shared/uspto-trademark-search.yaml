@@ -1,0 +1,272 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: USPTO Trademark Search API
+  description: >-
+    Provides access to USPTO trademark data via RapidAPI. Enables trademark
+    keyword search, availability checking, serial number lookups, owner
+    searches, and database status queries. Updated daily from USPTO sources.
+  tags:
+    - Brand Protection
+    - Intellectual Property
+    - Legal Research
+    - Trademark
+    - USPTO
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      RAPIDAPI_KEY: RAPIDAPI_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: uspto-trademark-search
+      baseUri: https://uspto-trademark.p.rapidapi.com
+      description: USPTO Trademark Search API via RapidAPI
+      authentication:
+        type: apikey
+        key: X-RapidAPI-Key
+        value: "{{RAPIDAPI_KEY}}"
+        placement: header
+      resources:
+        - name: trademark-search
+          path: /v1/trademarkSearch
+          description: Search trademarks by keyword
+          operations:
+            - name: search-trademarks
+              method: GET
+              description: Search active or all trademarks by keyword
+              inputParameters:
+                - name: keyword
+                  in: path
+                  type: string
+                  required: true
+                  description: Trademark keyword to search for
+                - name: searchType
+                  in: path
+                  type: string
+                  required: true
+                  description: Search type (active or all)
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: trademark-availability
+          path: /v1/trademarkAvailable
+          description: Check trademark availability
+          operations:
+            - name: check-trademark-availability
+              method: GET
+              description: Check if a trademark keyword is available for registration
+              inputParameters:
+                - name: keyword
+                  in: path
+                  type: string
+                  required: true
+                  description: Trademark keyword to check
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: trademark-lookup
+          path: /v1/trademarkBySerial
+          description: Look up trademark by serial number
+          operations:
+            - name: get-trademark-by-serial-number
+              method: GET
+              description: Retrieve full trademark details by USPTO serial number
+              inputParameters:
+                - name: serialNumber
+                  in: path
+                  type: string
+                  required: true
+                  description: USPTO trademark serial number (8 digits)
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: trademark-owner-search
+          path: /v1/trademarkOwner
+          description: Search trademarks by owner name
+          operations:
+            - name: search-trademarks-by-owner
+              method: GET
+              description: Find all trademarks owned by a specific individual or organization
+              inputParameters:
+                - name: owner
+                  in: path
+                  type: string
+                  required: true
+                  description: Owner name to search for
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: Page number for pagination
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: database-status
+          path: /v1/databaseStatus
+          description: Database freshness and health
+          operations:
+            - name: get-database-status
+              method: GET
+              description: Get current database update status and record count
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: uspto-trademark-search-rest
+      resources:
+        - path: /v1/trademarks
+          name: trademark-search
+          description: Search trademarks by keyword
+          operations:
+            - method: GET
+              name: search-trademarks
+              description: Search active or all trademarks by keyword
+              call: "uspto-trademark-search.search-trademarks"
+              with:
+                keyword: "rest.keyword"
+                searchType: "rest.searchType"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/trademarks/availability/{keyword}
+          name: trademark-availability
+          description: Check trademark availability
+          operations:
+            - method: GET
+              name: check-trademark-availability
+              description: Check if a trademark keyword is available
+              call: "uspto-trademark-search.check-trademark-availability"
+              with:
+                keyword: "rest.keyword"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/trademarks/{serialNumber}
+          name: trademark-lookup
+          description: Look up trademark by serial number
+          operations:
+            - method: GET
+              name: get-trademark-by-serial-number
+              description: Get trademark details by serial number
+              call: "uspto-trademark-search.get-trademark-by-serial-number"
+              with:
+                serialNumber: "rest.serialNumber"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/owners/{owner}/trademarks
+          name: owner-trademarks
+          description: Search trademarks by owner
+          operations:
+            - method: GET
+              name: search-trademarks-by-owner
+              description: Get all trademarks for a specific owner
+              call: "uspto-trademark-search.search-trademarks-by-owner"
+              with:
+                owner: "rest.owner"
+                page: "rest.page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/database/status
+          name: database-status
+          description: Database status
+          operations:
+            - method: GET
+              name: get-database-status
+              description: Get database update status
+              call: "uspto-trademark-search.get-database-status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: uspto-trademark-search-mcp
+      transport: http
+      tools:
+        - name: search-trademarks
+          description: Search USPTO trademark database by keyword
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.search-trademarks"
+          with:
+            keyword: "tools.keyword"
+            searchType: "tools.searchType"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-trademark-availability
+          description: Check if a trademark keyword is available for registration
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.check-trademark-availability"
+          with:
+            keyword: "tools.keyword"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-trademark-by-serial-number
+          description: Retrieve full trademark details by serial number
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "uspto-trademark-search.get-trademark-by-serial-number"
+          with:
+            serialNumber: "tools.serialNumber"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-trademarks-by-owner
+          description: Find all trademarks owned by a specific person or company
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.search-trademarks-by-owner"
+          with:
+            owner: "tools.owner"
+            page: "tools.page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-database-status
+          description: Check database freshness and record count
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "uspto-trademark-search.get-database-status"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,181 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: USPTO Trademark Research
+  description: >-
+    Workflow capability for trademark research and brand protection using the
+    USPTO Trademark Search API. Supports legal professionals, brand managers,
+    startup founders, and IP attorneys conducting trademark availability checks,
+    competitive brand portfolio research, and ownership due diligence through
+    a unified REST and MCP interface.
+  tags:
+    - Brand Protection
+    - Due Diligence
+    - Intellectual Property
+    - Legal Research
+    - Trademark
+    - USPTO
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      RAPIDAPI_KEY: RAPIDAPI_KEY
+
+capability:
+  consumes:
+    - import: uspto-trademark-search
+      location: ./shared/uspto-trademark-search.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: trademark-research-api
+      description: "Unified REST API for trademark research and brand protection workflows."
+      resources:
+        - path: /v1/trademarks
+          name: trademark-search
+          description: Search USPTO trademark database by keyword
+          operations:
+            - method: GET
+              name: search-trademarks
+              description: Search active or all trademarks matching a keyword
+              call: "uspto-trademark-search.search-trademarks"
+              with:
+                keyword: "rest.keyword"
+                searchType: "rest.searchType"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/trademarks/availability/{keyword}
+          name: trademark-availability
+          description: Check if a trademark keyword is available for registration
+          operations:
+            - method: GET
+              name: check-trademark-availability
+              description: Returns availability status and list of conflicting marks
+              call: "uspto-trademark-search.check-trademark-availability"
+              with:
+                keyword: "rest.keyword"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/trademarks/{serialNumber}
+          name: trademark-detail
+          description: Retrieve complete trademark details by serial number
+          operations:
+            - method: GET
+              name: get-trademark-by-serial-number
+              description: Get full trademark filing details, prosecution history, and owner info
+              call: "uspto-trademark-search.get-trademark-by-serial-number"
+              with:
+                serialNumber: "rest.serialNumber"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/owners/{owner}/trademarks
+          name: owner-portfolio
+          description: Research trademark portfolio of a specific owner
+          operations:
+            - method: GET
+              name: search-trademarks-by-owner
+              description: List all trademarks owned by an individual or organization
+              call: "uspto-trademark-search.search-trademarks-by-owner"
+              with:
+                owner: "rest.owner"
+                page: "rest.page"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/database/status
+          name: database-status
+          description: USPTO trademark database status
+          operations:
+            - method: GET
+              name: get-database-status
+              description: Verify database is current before conducting research
+              call: "uspto-trademark-search.get-database-status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: trademark-research-mcp
+      transport: http
+      description: "MCP server for AI-assisted trademark research and brand protection."
+      tools:
+        - name: search-trademarks
+          description: >-
+            Search the USPTO trademark database for marks matching a keyword.
+            Use this to find existing trademarks before registering a new brand name.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.search-trademarks"
+          with:
+            keyword: "tools.keyword"
+            searchType: "tools.searchType"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: check-trademark-availability
+          description: >-
+            Check whether a trademark keyword appears to be available for registration.
+            Returns availability status and any conflicting marks found in the USPTO database.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.check-trademark-availability"
+          with:
+            keyword: "tools.keyword"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-trademark-by-serial-number
+          description: >-
+            Retrieve complete trademark details for a known serial number,
+            including prosecution history, owner details, and goods/services classification.
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "uspto-trademark-search.get-trademark-by-serial-number"
+          with:
+            serialNumber: "tools.serialNumber"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: research-owner-trademark-portfolio
+          description: >-
+            Find all trademarks owned by a specific company or individual.
+            Useful for competitive intelligence and M&A due diligence.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "uspto-trademark-search.search-trademarks-by-owner"
+          with:
+            owner: "tools.owner"
+            page: "tools.page"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-database-status
+          description: >-
+            Check when the USPTO trademark database was last updated and verify
+            it is operating normally before running trademark research queries.
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "uspto-trademark-search.get-database-status"
+          outputParameters:
+            - type: object
+              mapping: "$."

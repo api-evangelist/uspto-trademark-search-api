@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://uspto-trademark.p.rapidapi.com/v1/databaseStatus",
+    "headers": {
+      "X-RapidAPI-Key": "your-rapidapi-key",
+      "X-RapidAPI-Host": "uspto-trademark.p.rapidapi.com"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "lastUpdated": "2026-05-02T22:15:00Z",
+      "recordCount": 4823917,
+      "status": "ONLINE",
+      "version": "2026.05.02"
+    }
+  }
+}

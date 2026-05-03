@@ -1,0 +1,172 @@
+extends: spectral:oas
+rules:
+  # ── Path conventions ──────────────────────────────────────────────────────────
+
+  uspto-trademark-path-versioned:
+    message: "All paths must begin with a version prefix such as /v1/"
+    severity: error
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/v[0-9]/"
+
+  uspto-trademark-path-kebab-case:
+    message: "Path segments must use kebab-case (lowercase letters, digits, hyphens, or {variables})"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/v[0-9])?(/[a-z0-9-{}]+)+$"
+
+  # ── Operation conventions ─────────────────────────────────────────────────────
+
+  uspto-trademark-operation-id-required:
+    message: "Every operation must have an operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  uspto-trademark-operation-id-camel-case:
+    message: "operationId must use camelCase"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  uspto-trademark-summary-title-case:
+    message: "Operation summary must use Title Case"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  uspto-trademark-summary-required:
+    message: "Every operation must have a summary"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  uspto-trademark-description-required:
+    message: "Every operation should have a description"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  uspto-trademark-tags-required:
+    message: "Every operation must have at least one tag"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  # ── Response conventions ──────────────────────────────────────────────────────
+
+  uspto-trademark-response-200-required:
+    message: "Every GET operation must define a 200 response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: truthy
+
+  uspto-trademark-response-401-required:
+    message: "Secured operations should document a 401 Unauthorized response"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: responses.401
+      function: truthy
+
+  # ── Parameter conventions ─────────────────────────────────────────────────────
+
+  uspto-trademark-parameter-description:
+    message: "All parameters should have a description"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  uspto-trademark-parameter-schema-required:
+    message: "All parameters must define a schema"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: schema
+      function: truthy
+
+  # ── Schema conventions ────────────────────────────────────────────────────────
+
+  uspto-trademark-schema-description:
+    message: "Schema properties should have descriptions"
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  uspto-trademark-serial-number-pattern:
+    message: "Serial number parameters must enforce the 8-digit pattern"
+    severity: warn
+    given: "$.components.schemas[*].properties.serialNumber"
+    then:
+      field: type
+      function: enumeration
+      functionOptions:
+        values: ["string"]
+
+  # ── Security conventions ──────────────────────────────────────────────────────
+
+  uspto-trademark-security-defined:
+    message: "API must define security schemes"
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  uspto-trademark-global-security:
+    message: "API should define global security requirements"
+    severity: warn
+    given: "$"
+    then:
+      field: security
+      function: truthy
+
+  # ── Info conventions ──────────────────────────────────────────────────────────
+
+  uspto-trademark-info-contact:
+    message: "API info must include contact information"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  uspto-trademark-info-version:
+    message: "API info must include a version"
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  uspto-trademark-server-defined:
+    message: "API must define at least one server"
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy

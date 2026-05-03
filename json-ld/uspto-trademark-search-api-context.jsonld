@@ -1,0 +1,118 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "tm": "https://api-evangelist.github.io/uspto-trademark-search-api/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Trademark": {
+      "@id": "tm:Trademark",
+      "@type": "schema:CreativeWork"
+    },
+    "TrademarkApplication": "tm:TrademarkApplication",
+    "TrademarkOwner": "tm:TrademarkOwner",
+    "ProsecutionEvent": "tm:ProsecutionEvent",
+    "GoodsAndServicesClass": "tm:GoodsAndServicesClass",
+
+    "serialNumber": {
+      "@id": "tm:serialNumber",
+      "@type": "xsd:string"
+    },
+    "registrationNumber": {
+      "@id": "tm:registrationNumber",
+      "@type": "xsd:string"
+    },
+    "wordMark": {
+      "@id": "tm:wordMark",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "schema:status",
+      "@type": "xsd:string"
+    },
+    "statusCode": {
+      "@id": "tm:statusCode",
+      "@type": "xsd:string"
+    },
+    "filingDate": {
+      "@id": "tm:filingDate",
+      "@type": "xsd:date"
+    },
+    "registrationDate": {
+      "@id": "tm:registrationDate",
+      "@type": "xsd:date"
+    },
+    "ownerName": {
+      "@id": "schema:name"
+    },
+    "ownerAddress": {
+      "@id": "schema:address"
+    },
+    "ownerCity": {
+      "@id": "schema:addressLocality"
+    },
+    "ownerState": {
+      "@id": "schema:addressRegion"
+    },
+    "ownerCountry": {
+      "@id": "schema:addressCountry"
+    },
+    "ownerPostalCode": {
+      "@id": "schema:postalCode"
+    },
+    "goodsAndServices": {
+      "@id": "tm:goodsAndServices",
+      "@type": "xsd:string"
+    },
+    "internationalClasses": {
+      "@id": "tm:internationalClasses",
+      "@container": "@list"
+    },
+    "markType": {
+      "@id": "tm:markType",
+      "@type": "xsd:string"
+    },
+    "firstUsedDate": {
+      "@id": "tm:firstUsedDate",
+      "@type": "xsd:date"
+    },
+    "firstUsedInCommerceDate": {
+      "@id": "tm:firstUsedInCommerceDate",
+      "@type": "xsd:date"
+    },
+    "prosecutionHistory": {
+      "@id": "tm:prosecutionHistory",
+      "@container": "@list"
+    },
+    "correspondentName": {
+      "@id": "tm:correspondentName"
+    },
+    "available": {
+      "@id": "tm:available",
+      "@type": "xsd:boolean"
+    },
+    "conflictingMarks": {
+      "@id": "tm:conflictingMarks",
+      "@container": "@list"
+    },
+    "lastUpdated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "recordCount": {
+      "@id": "tm:recordCount",
+      "@type": "xsd:integer"
+    },
+
+    "Registered": "tm:Registered",
+    "Pending": "tm:Pending",
+    "Abandoned": "tm:Abandoned",
+    "Expired": "tm:Expired",
+
+    "STANDARD_CHARACTER": "tm:StandardCharacterMark",
+    "DESIGN": "tm:DesignMark",
+    "SOUND": "tm:SoundMark",
+    "COLOR": "tm:ColorMark",
+    "THREE_DIMENSIONAL": "tm:ThreeDimensionalMark"
+  }
+}

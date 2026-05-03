@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/uspto-trademark-search-api/json-schema/trademark.json",
+  "title": "USPTO Trademark",
+  "description": "Represents a trademark record from the United States Patent and Trademark Office (USPTO) database.",
+  "type": "object",
+  "required": ["serialNumber", "wordMark", "status", "filingDate", "ownerName"],
+  "properties": {
+    "serialNumber": {
+      "type": "string",
+      "description": "USPTO trademark serial number (8 digits)",
+      "pattern": "^\\d{8}$",
+      "examples": ["88123456", "73198100"]
+    },
+    "registrationNumber": {
+      "type": ["string", "null"],
+      "description": "USPTO trademark registration number, null if not yet registered",
+      "examples": ["1114384", "3307912"]
+    },
+    "wordMark": {
+      "type": "string",
+      "description": "The text elements of the trademark",
+      "examples": ["APPLE", "NOVACORP"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the trademark application or registration",
+      "examples": ["Registered", "Pending", "Abandoned", "Expired"]
+    },
+    "statusCode": {
+      "type": "string",
+      "description": "USPTO internal status code",
+      "examples": ["700", "630", "602"]
+    },
+    "filingDate": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the trademark application was filed with the USPTO"
+    },
+    "registrationDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the trademark was registered, null if not yet registered"
+    },
+    "ownerName": {
+      "type": "string",
+      "description": "Name of the trademark owner (individual or organization)"
+    },
+    "ownerAddress": {
+      "type": "string",
+      "description": "Street address of the trademark owner"
+    },
+    "ownerCity": {
+      "type": "string",
+      "description": "City of the trademark owner"
+    },
+    "ownerState": {
+      "type": "string",
+      "description": "State or province of the trademark owner",
+      "examples": ["TX", "CA", "NY"]
+    },
+    "ownerCountry": {
+      "type": "string",
+      "description": "Country of the trademark owner (ISO 3166-1 alpha-2)",
+      "examples": ["US", "GB", "DE"]
+    },
+    "ownerPostalCode": {
+      "type": "string",
+      "description": "Postal code of the trademark owner"
+    },
+    "correspondentName": {
+      "type": "string",
+      "description": "Name of the correspondent attorney or agent"
+    },
+    "goodsAndServices": {
+      "type": "string",
+      "description": "Description of the goods and services covered by the trademark"
+    },
+    "internationalClasses": {
+      "type": "array",
+      "description": "International Nice Classification (NCL) class numbers",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 45
+      },
+      "examples": [[9], [25, 35], [42]]
+    },
+    "markType": {
+      "type": "string",
+      "description": "Type of trademark mark",
+      "enum": ["STANDARD_CHARACTER", "DESIGN", "SOUND", "COLOR", "THREE_DIMENSIONAL"],
+      "default": "STANDARD_CHARACTER"
+    },
+    "firstUsedDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the mark was first used anywhere"
+    },
+    "firstUsedInCommerceDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Date the mark was first used in commerce"
+    },
+    "prosecutionHistory": {
+      "type": "array",
+      "description": "Timeline of actions taken during the trademark prosecution process",
+      "items": {
+        "type": "object",
+        "required": ["date", "code", "description"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of the prosecution action"
+          },
+          "code": {
+            "type": "string",
+            "description": "USPTO action code"
+          },
+          "description": {
+            "type": "string",
+            "description": "Human-readable description of the action"
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "serialNumber": "73198100",
+      "registrationNumber": "1114384",
+      "wordMark": "APPLE",
+      "status": "Registered",
+      "statusCode": "700",
+      "filingDate": "1978-12-28",
+      "registrationDate": "1980-01-27",
+      "ownerName": "Apple Inc.",
+      "ownerCity": "Cupertino",
+      "ownerState": "CA",
+      "ownerCountry": "US",
+      "goodsAndServices": "Computers and computer programs",
+      "internationalClasses": [9],
+      "markType": "STANDARD_CHARACTER"
+    }
+  ]
+}
