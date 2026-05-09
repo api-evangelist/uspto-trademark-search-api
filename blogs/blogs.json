@@ -1,0 +1,21 @@
+{
+  "repo": "uspto-trademark-search-api",
+  "feeds": [
+    {
+      "source": "https://medium.com/p/71274363605b",
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
+    },
+    {
+      "source": "https://medium.com/p/19efc7e1cc6",
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
+    }
+  ],
+  "fetched": "2026-05-09T20:17:51Z",
+  "post_count": 0
+}
