@@ -79,7 +79,7 @@ apis:
         url: json-structure/uspto-trademark-search-api-trademark-structure.json
 common:
   - url: https://rapidapi.com/pentium10/api/uspto-trademark/
-    type: Signup
+    type: SignUp
   - url: https://rapidapi.com/developer/dashboard
     type: Login
   - url: https://rapidapi.com/pentium10/api/uspto-trademark
@@ -98,7 +98,7 @@ common:
     type: Twitter
   - type: SpectralRules
     url: rules/uspto-trademark-search-api-rules.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/uspto-trademark-search-api-context.jsonld
   - type: Vocabulary
     url: vocabulary/uspto-trademark-search-api-vocabulary.yml
