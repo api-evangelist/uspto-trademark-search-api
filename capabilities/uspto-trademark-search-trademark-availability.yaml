@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Trademark Search API — Trademark Availability
+  description: 'USPTO Trademark Search API — Trademark Availability. 1 operations. Lead operation: Check Trademark Availability.
+    Self-contained Naftiko capability covering one Uspto Trademark Search Api business surface.'
+  tags:
+  - Uspto Trademark Search Api
+  - Trademark Availability
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    USPTO_TRADEMARK_SEARCH_API_API_KEY: USPTO_TRADEMARK_SEARCH_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-trademark-search-trademark-availability
+    baseUri: https://uspto-trademark.p.rapidapi.com
+    description: USPTO Trademark Search API — Trademark Availability business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-trademarkAvailable-keyword
+      path: /v1/trademarkAvailable/{keyword}
+      operations:
+      - name: checktrademarkavailability
+        method: GET
+        description: Check Trademark Availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: keyword
+          in: path
+          type: string
+          description: The trademark keyword to check for availability
+          required: true
+    authentication:
+      type: apikey
+      key: X-RapidAPI-Key
+      value: '{{env.USPTO_TRADEMARK_SEARCH_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-trademark-search-trademark-availability-rest
+    port: 8080
+    description: REST adapter for USPTO Trademark Search API — Trademark Availability. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/trademarkavailable/{keyword}
+      name: v1-trademarkavailable-keyword
+      description: REST surface for v1-trademarkAvailable-keyword.
+      operations:
+      - method: GET
+        name: checktrademarkavailability
+        description: Check Trademark Availability
+        call: uspto-trademark-search-trademark-availability.checktrademarkavailability
+        with:
+          keyword: rest.keyword
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-trademark-search-trademark-availability-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Trademark Search API — Trademark Availability. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: check-trademark-availability
+      description: Check Trademark Availability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-trademark-search-trademark-availability.checktrademarkavailability
+      with:
+        keyword: tools.keyword
+      outputParameters:
+      - type: object
+        mapping: $.

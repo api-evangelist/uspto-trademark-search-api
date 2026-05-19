@@ -1,0 +1,90 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Trademark Search API — Trademark Search
+  description: 'USPTO Trademark Search API — Trademark Search. 1 operations. Lead operation: Search Trademarks by Keyword.
+    Self-contained Naftiko capability covering one Uspto Trademark Search Api business surface.'
+  tags:
+  - Uspto Trademark Search Api
+  - Trademark Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    USPTO_TRADEMARK_SEARCH_API_API_KEY: USPTO_TRADEMARK_SEARCH_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-trademark-search-trademark-search
+    baseUri: https://uspto-trademark.p.rapidapi.com
+    description: USPTO Trademark Search API — Trademark Search business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-trademarkSearch-keyword-searchType
+      path: /v1/trademarkSearch/{keyword}/{searchType}
+      operations:
+      - name: searchtrademarks
+        method: GET
+        description: Search Trademarks by Keyword
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: keyword
+          in: path
+          type: string
+          description: The trademark keyword or phrase to search for
+          required: true
+        - name: searchType
+          in: path
+          type: string
+          description: Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive
+            marks.
+          required: true
+    authentication:
+      type: apikey
+      key: X-RapidAPI-Key
+      value: '{{env.USPTO_TRADEMARK_SEARCH_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-trademark-search-trademark-search-rest
+    port: 8080
+    description: REST adapter for USPTO Trademark Search API — Trademark Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/trademarksearch/{keyword}/{searchtype}
+      name: v1-trademarksearch-keyword-searchtype
+      description: REST surface for v1-trademarkSearch-keyword-searchType.
+      operations:
+      - method: GET
+        name: searchtrademarks
+        description: Search Trademarks by Keyword
+        call: uspto-trademark-search-trademark-search.searchtrademarks
+        with:
+          keyword: rest.keyword
+          searchType: rest.searchType
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-trademark-search-trademark-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Trademark Search API — Trademark Search. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-trademarks-keyword
+      description: Search Trademarks by Keyword
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-trademark-search-trademark-search.searchtrademarks
+      with:
+        keyword: tools.keyword
+        searchType: tools.searchType
+      outputParameters:
+      - type: object
+        mapping: $.

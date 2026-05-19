@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: USPTO Trademark Search API — Owner Search
+  description: 'USPTO Trademark Search API — Owner Search. 1 operations. Lead operation: Search Trademarks by Owner. Self-contained
+    Naftiko capability covering one Uspto Trademark Search Api business surface.'
+  tags:
+  - Uspto Trademark Search Api
+  - Owner Search
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    USPTO_TRADEMARK_SEARCH_API_API_KEY: USPTO_TRADEMARK_SEARCH_API_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: uspto-trademark-search-owner-search
+    baseUri: https://uspto-trademark.p.rapidapi.com
+    description: USPTO Trademark Search API — Owner Search business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-trademarkOwner-owner
+      path: /v1/trademarkOwner/{owner}
+      operations:
+      - name: searchtrademarksbyowner
+        method: GET
+        description: Search Trademarks by Owner
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: owner
+          in: path
+          type: string
+          description: The trademark owner name (individual or company)
+          required: true
+        - name: page
+          in: query
+          type: integer
+          description: Page number for pagination (1-based)
+    authentication:
+      type: apikey
+      key: X-RapidAPI-Key
+      value: '{{env.USPTO_TRADEMARK_SEARCH_API_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: uspto-trademark-search-owner-search-rest
+    port: 8080
+    description: REST adapter for USPTO Trademark Search API — Owner Search. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/trademarkowner/{owner}
+      name: v1-trademarkowner-owner
+      description: REST surface for v1-trademarkOwner-owner.
+      operations:
+      - method: GET
+        name: searchtrademarksbyowner
+        description: Search Trademarks by Owner
+        call: uspto-trademark-search-owner-search.searchtrademarksbyowner
+        with:
+          owner: rest.owner
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: uspto-trademark-search-owner-search-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for USPTO Trademark Search API — Owner Search. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: search-trademarks-owner
+      description: Search Trademarks by Owner
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: uspto-trademark-search-owner-search.searchtrademarksbyowner
+      with:
+        owner: tools.owner
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.
