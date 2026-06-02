@@ -3,19 +3,13 @@
   "feeds": [
     {
       "source": "https://medium.com/p/71274363605b",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://medium.com/p/19efc7e1cc6",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }
