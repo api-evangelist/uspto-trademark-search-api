@@ -1,0 +1,965 @@
+{
+  "item": [
+    {
+      "id": "70c369ac-3d83-41d4-8a3d-8ba4e0195aed",
+      "name": "Trademark Search",
+      "description": {
+        "content": "Search trademarks by keyword or phrase",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32410d3a-76c3-4477-af7a-42931432370e",
+          "name": "Search Trademarks by Keyword",
+          "request": {
+            "name": "Search Trademarks by Keyword",
+            "description": {
+              "content": "Searches active and inactive trademarks in the USPTO database by keyword. Returns matching trademarks with their current status, registration numbers, owner details, and goods/services classifications. Supports pagination for large result sets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkSearch",
+                ":keyword",
+                ":searchType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyword",
+                  "description": "(Required) The trademark keyword or phrase to search for"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "searchType",
+                  "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34ba0868-3bc2-44d9-b8f3-8d50def96d6f",
+              "name": "Trademark search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkSearch",
+                    ":keyword",
+                    ":searchType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword or phrase to search for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchType",
+                      "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 735,\n  \"items\": [\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1957-11-29\",\n      \"registrationDate\": \"1959-02-06\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        8314,\n        4941\n      ]\n    },\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1984-06-10\",\n      \"registrationDate\": \"1964-01-03\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        6386,\n        8283\n      ]\n    }\n  ],\n  \"page\": 6546\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68d3910a-b642-43a0-a04c-895d1d7709d3",
+              "name": "Invalid search parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkSearch",
+                    ":keyword",
+                    ":searchType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword or phrase to search for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchType",
+                      "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ace4f39-dc03-4bbf-9ad1-c81bf78b925c",
+              "name": "Invalid or missing RapidAPI key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkSearch",
+                    ":keyword",
+                    ":searchType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword or phrase to search for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchType",
+                      "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14905ab7-81f0-4f34-a684-159ef4f4e5d4",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkSearch",
+                    ":keyword",
+                    ":searchType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword or phrase to search for"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "searchType",
+                      "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "270fef04-6668-476e-b9fa-96aec85a2acc",
+      "name": "Trademark Availability",
+      "description": {
+        "content": "Check if a trademark is available for registration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a815063b-ead9-4499-90d7-c17b646c24b3",
+          "name": "Check Trademark Availability",
+          "request": {
+            "name": "Check Trademark Availability",
+            "description": {
+              "content": "Checks whether a trademark keyword is available for registration by searching for identical or confusingly similar marks in the USPTO database. Returns availability status and any conflicting marks found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkAvailable",
+                ":keyword"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyword",
+                  "description": "(Required) The trademark keyword to check for availability"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b982a5a8-ccd2-4385-bf28-9783a9c64b4f",
+              "name": "Trademark availability check result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keyword\": \"string\",\n  \"available\": true,\n  \"conflictingMarks\": [\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"2013-10-26\",\n      \"registrationDate\": \"1966-05-23\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        3809,\n        9832\n      ]\n    },\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1959-05-20\",\n      \"registrationDate\": \"1998-05-23\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        6919,\n        21\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "265cbc4e-7904-4aaf-87ef-6539aaf58005",
+              "name": "Invalid keyword",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62479459-7d22-4841-9f96-d228be1d261d",
+              "name": "Invalid or missing RapidAPI key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "824cbcf0-aa74-43cc-9bcd-6b403c3fb331",
+      "name": "Trademark Lookup",
+      "description": {
+        "content": "Retrieve trademark details by serial number",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3499e9d2-bd4f-4cbd-932e-2eaac8b79037",
+          "name": "Get Trademark by Serial Number",
+          "request": {
+            "name": "Get Trademark by Serial Number",
+            "description": {
+              "content": "Retrieves complete trademark information for a specific trademark using its USPTO serial number. Returns all filing details, status history, owner information, goods/services classifications, and prosecution history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkBySerial",
+                ":serialNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serialNumber",
+                  "description": "(Required) The USPTO trademark serial number (8 digits)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ef802a5-11bb-4931-9dac-92a8810877f6",
+              "name": "Trademark details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkBySerial",
+                    ":serialNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serialNumber",
+                      "description": "(Required) The USPTO trademark serial number (8 digits)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serialNumber\": \"string\",\n  \"registrationNumber\": \"string\",\n  \"wordMark\": \"string\",\n  \"status\": \"string\",\n  \"statusCode\": \"string\",\n  \"filingDate\": \"2020-03-14\",\n  \"registrationDate\": \"2018-06-24\",\n  \"ownerName\": \"string\",\n  \"goodsAndServices\": \"string\",\n  \"internationalClasses\": [\n    981,\n    4257\n  ],\n  \"description\": \"string\",\n  \"ownerAddress\": \"string\",\n  \"ownerCity\": \"string\",\n  \"ownerState\": \"string\",\n  \"ownerCountry\": \"string\",\n  \"ownerPostalCode\": \"string\",\n  \"correspondentName\": \"string\",\n  \"correspondentAddress\": \"string\",\n  \"markType\": \"string\",\n  \"distinctivenessClaim\": \"string\",\n  \"firstUsedDate\": \"1987-02-16\",\n  \"firstUsedInCommerceDate\": \"2007-01-15\",\n  \"prosecutionHistory\": [\n    {\n      \"date\": \"1992-05-17\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"date\": \"1980-03-18\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "217a9971-677f-430e-ab9b-9defaef725b3",
+              "name": "Serial number not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkBySerial",
+                    ":serialNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serialNumber",
+                      "description": "(Required) The USPTO trademark serial number (8 digits)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "16bba9c2-03bb-4be1-9f3e-1b8f90a0922d",
+      "name": "Owner Search",
+      "description": {
+        "content": "Search trademarks by owner name",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "014c4da7-efcd-45e7-83fe-2266756db2ff",
+          "name": "Search Trademarks by Owner",
+          "request": {
+            "name": "Search Trademarks by Owner",
+            "description": {
+              "content": "Searches the USPTO trademark database for all trademarks owned by a specific individual or organization. Useful for brand portfolio analysis, competitive intelligence, and due diligence research.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkOwner",
+                ":owner"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination (1-based)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner",
+                  "description": "(Required) The trademark owner name (individual or company)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2461b0b7-a7ec-45a1-bf2b-dfb8edcc97f8",
+              "name": "Trademarks owned by the specified owner",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkOwner",
+                    ":owner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) The trademark owner name (individual or company)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner\": \"string\",\n  \"count\": 6230,\n  \"items\": [\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"2024-08-26\",\n      \"registrationDate\": \"1971-06-20\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        4305,\n        2923\n      ]\n    },\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1981-08-14\",\n      \"registrationDate\": \"1981-04-02\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        2494,\n        1360\n      ]\n    }\n  ],\n  \"page\": 3164\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6489419-ecfd-443d-8fca-1d79db301d4d",
+              "name": "No trademarks found for owner",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkOwner",
+                    ":owner"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner",
+                      "description": "(Required) The trademark owner name (individual or company)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2d9fc178-b0ab-46b6-b301-c063dd88979a",
+      "name": "Database Status",
+      "description": {
+        "content": "Database freshness and update information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bbcbc74e-f476-4918-8630-3999438f36d1",
+          "name": "Get Database Status",
+          "request": {
+            "name": "Get Database Status",
+            "description": {
+              "content": "Returns the current status of the USPTO trademark database including the last update date, record count, and database health information. Use this endpoint to verify data freshness before performing trademark searches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "databaseStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "025e0d04-fc85-4925-bedf-dbee4861678e",
+              "name": "Database status information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "databaseStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lastUpdated\": \"1962-05-02T06:22:45.753Z\",\n  \"recordCount\": 4676,\n  \"status\": \"MAINTENANCE\",\n  \"version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uspto-trademark.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f316668-bbe4-4ef9-9b53-0714f4af9d37",
+    "name": "USPTO Trademark Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+      "type": "text/plain"
+    }
+  }
+}

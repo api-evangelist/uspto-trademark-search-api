@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Trademark Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trademarks by Keyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkSearch/:keyword/:searchType",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "apple",
+                "type": "path",
+                "description": "The trademark keyword or phrase to search for"
+              },
+              {
+                "name": "searchType",
+                "value": "active",
+                "type": "path",
+                "description": "Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+              }
+            ]
+          },
+          "docs": "Searches active and inactive trademarks in the USPTO database by keyword. Returns matching trademarks with their current status, registration numbers, owner details, and goods/services classifications. Supports pagination for large result sets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trademark Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Trademark Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkAvailable/:keyword",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "novabrand",
+                "type": "path",
+                "description": "The trademark keyword to check for availability"
+              }
+            ]
+          },
+          "docs": "Checks whether a trademark keyword is available for registration by searching for identical or confusingly similar marks in the USPTO database. Returns availability status and any conflicting marks found."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Trademark Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trademark by Serial Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkBySerial/:serialNumber",
+            "params": [
+              {
+                "name": "serialNumber",
+                "value": "88123456",
+                "type": "path",
+                "description": "The USPTO trademark serial number (8 digits)"
+              }
+            ]
+          },
+          "docs": "Retrieves complete trademark information for a specific trademark using its USPTO serial number. Returns all filing details, status history, owner information, goods/services classifications, and prosecution history."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Owner Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trademarks by Owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkOwner/:owner",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Apple Inc.",
+                "type": "path",
+                "description": "The trademark owner name (individual or company)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (1-based)"
+              }
+            ]
+          },
+          "docs": "Searches the USPTO trademark database for all trademarks owned by a specific individual or organization. Useful for brand portfolio analysis, competitive intelligence, and due diligence research."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Database Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Database Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/databaseStatus"
+          },
+          "docs": "Returns the current status of the USPTO trademark database including the last update date, record count, and database health information. Use this endpoint to verify data freshness before performing trademark searches."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
