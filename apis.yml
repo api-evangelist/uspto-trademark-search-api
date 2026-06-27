@@ -74,7 +74,7 @@ common:
   - type: GitHubOrganization
     url: https://github.com/USPTO
   - url: https://rapidapi.com/pentium10/api/uspto-trademark/
-    type: SignUp
+    type: Signup
   - url: https://rapidapi.com/developer/dashboard
     type: Login
   - url: https://rapidapi.com/pentium10/api/uspto-trademark

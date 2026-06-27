@@ -2,6 +2,13 @@
   "repo": "uspto-trademark-search-api",
   "feeds": [
     {
+      "source": "https://martonkodok.medium.com/feed",
+      "feed_url": "https://martonkodok.medium.com/feed",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://medium.com/p/71274363605b",
       "error": "HTTPError"
     },
@@ -10,6 +17,6 @@
       "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-14T20:42:17Z",
+  "fetched": "2026-06-27T12:03:07Z",
   "post_count": 0
 }
