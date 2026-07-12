@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/uspto-trademark-search-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: RapidAPIKey
+  type: apiKey
+  in: header
+  parameter: X-RapidAPI-Key
+  description: RapidAPI subscription key
+  sources:
+  - openapi/uspto-trademark-search-api-openapi.yml

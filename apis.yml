@@ -71,6 +71,10 @@ apis:
       - type: JSONStructure
         url: json-structure/uspto-trademark-search-api-trademark-structure.json
 common:
+  - type: DomainSecurity
+    url: security/uspto-trademark-search-api-domain-security.yml
+  - type: Authentication
+    url: authentication/uspto-trademark-search-api-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/USPTO
   - url: https://rapidapi.com/pentium10/api/uspto-trademark/
