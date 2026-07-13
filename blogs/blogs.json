@@ -10,13 +10,19 @@
     },
     {
       "source": "https://medium.com/p/71274363605b",
-      "error": "HTTPError"
+      "feed_url": "https://medium.com/p/71274363605b",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     },
     {
       "source": "https://medium.com/p/19efc7e1cc6",
-      "error": "HTTPError"
+      "feed_url": "https://medium.com/p/19efc7e1cc6",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-06-27T12:03:07Z",
-  "post_count": 0
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 10
 }
