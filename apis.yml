@@ -71,6 +71,8 @@ apis:
       - type: JSONStructure
         url: json-structure/uspto-trademark-search-api-trademark-structure.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/uspto-trademark-search-api-agentic-access.yml
   - type: DomainSecurity
     url: security/uspto-trademark-search-api-domain-security.yml
   - type: Authentication
