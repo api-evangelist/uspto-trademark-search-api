@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: USPTO Trademark Search Database Status API
+  description: The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.
+  version: '1.0'
+  contact:
+    name: MartonKodok
+    email: android482-one@yahoo.com
+    x-twitter: martonkodok
+  x-rapidapi-collection: https://rapidapi.com/pentium10/api/uspto-trademark
+servers:
+- url: https://uspto-trademark.p.rapidapi.com
+  description: USPTO Trademark Search API via RapidAPI
+security:
+- RapidAPIKey: []
+tags:
+- name: Database Status
+  description: Database freshness and update information
+paths:
+  /v1/databaseStatus:
+    get:
+      operationId: getDatabaseStatus
+      summary: Get Database Status
+      description: Returns the current status of the USPTO trademark database including the last update date, record count, and database health information. Use this endpoint to verify data freshness before performing trademark searches.
+      tags:
+      - Database Status
+      responses:
+        '200':
+          description: Database status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseStatus'
+components:
+  schemas:
+    DatabaseStatus:
+      type: object
+      properties:
+        lastUpdated:
+          type: string
+          format: date-time
+          description: Timestamp of the last database update
+        recordCount:
+          type: integer
+          description: Total number of trademark records in the database
+        status:
+          type: string
+          enum:
+          - ONLINE
+          - MAINTENANCE
+          - DEGRADED
+          description: Current database operational status
+        version:
+          type: string
+          description: Database version identifier
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: RapidAPI subscription key

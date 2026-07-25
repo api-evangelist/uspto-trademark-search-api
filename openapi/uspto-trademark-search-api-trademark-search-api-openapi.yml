@@ -1,0 +1,117 @@
+openapi: 3.1.0
+info:
+  title: USPTO Database Status Trademark Search API
+  description: The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.
+  version: '1.0'
+  contact:
+    name: MartonKodok
+    email: android482-one@yahoo.com
+    x-twitter: martonkodok
+  x-rapidapi-collection: https://rapidapi.com/pentium10/api/uspto-trademark
+servers:
+- url: https://uspto-trademark.p.rapidapi.com
+  description: USPTO Trademark Search API via RapidAPI
+security:
+- RapidAPIKey: []
+tags:
+- name: Trademark Search
+  description: Search trademarks by keyword or phrase
+paths:
+  /v1/trademarkSearch/{keyword}/{searchType}:
+    get:
+      operationId: searchTrademarks
+      summary: Search Trademarks by Keyword
+      description: Searches active and inactive trademarks in the USPTO database by keyword. Returns matching trademarks with their current status, registration numbers, owner details, and goods/services classifications. Supports pagination for large result sets.
+      tags:
+      - Trademark Search
+      parameters:
+      - name: keyword
+        in: path
+        required: true
+        description: The trademark keyword or phrase to search for
+        schema:
+          type: string
+        example: apple
+      - name: searchType
+        in: path
+        required: true
+        description: Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks.
+        schema:
+          type: string
+          enum:
+          - active
+          - all
+        example: active
+      responses:
+        '200':
+          description: Trademark search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrademarkSearchResponse'
+        '400':
+          description: Invalid search parameters
+        '401':
+          description: Invalid or missing RapidAPI key
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    TrademarkSearchResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of results found
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrademarkSummary'
+        page:
+          type: integer
+          description: Current page number
+    TrademarkSummary:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+          description: USPTO trademark serial number
+        registrationNumber:
+          type: string
+          nullable: true
+          description: USPTO registration number (if registered)
+        wordMark:
+          type: string
+          description: The text of the trademark
+        status:
+          type: string
+          description: Current status of the trademark
+        statusCode:
+          type: string
+          description: USPTO status code
+        filingDate:
+          type: string
+          format: date
+          description: Date the application was filed
+        registrationDate:
+          type: string
+          format: date
+          nullable: true
+          description: Date the trademark was registered
+        ownerName:
+          type: string
+          description: Name of the trademark owner
+        goodsAndServices:
+          type: string
+          description: Description of goods and services
+        internationalClasses:
+          type: array
+          items:
+            type: integer
+          description: International Nice Classification class numbers
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: RapidAPI subscription key

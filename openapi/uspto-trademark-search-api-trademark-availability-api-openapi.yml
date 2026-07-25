@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: USPTO Trademark Search Database Status Trademark Availability API
+  description: The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.
+  version: '1.0'
+  contact:
+    name: MartonKodok
+    email: android482-one@yahoo.com
+    x-twitter: martonkodok
+  x-rapidapi-collection: https://rapidapi.com/pentium10/api/uspto-trademark
+servers:
+- url: https://uspto-trademark.p.rapidapi.com
+  description: USPTO Trademark Search API via RapidAPI
+security:
+- RapidAPIKey: []
+tags:
+- name: Trademark Availability
+  description: Check if a trademark is available for registration
+paths:
+  /v1/trademarkAvailable/{keyword}:
+    get:
+      operationId: checkTrademarkAvailability
+      summary: Check Trademark Availability
+      description: Checks whether a trademark keyword is available for registration by searching for identical or confusingly similar marks in the USPTO database. Returns availability status and any conflicting marks found.
+      tags:
+      - Trademark Availability
+      parameters:
+      - name: keyword
+        in: path
+        required: true
+        description: The trademark keyword to check for availability
+        schema:
+          type: string
+        example: novabrand
+      responses:
+        '200':
+          description: Trademark availability check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrademarkAvailabilityResponse'
+        '400':
+          description: Invalid keyword
+        '401':
+          description: Invalid or missing RapidAPI key
+components:
+  schemas:
+    TrademarkSummary:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+          description: USPTO trademark serial number
+        registrationNumber:
+          type: string
+          nullable: true
+          description: USPTO registration number (if registered)
+        wordMark:
+          type: string
+          description: The text of the trademark
+        status:
+          type: string
+          description: Current status of the trademark
+        statusCode:
+          type: string
+          description: USPTO status code
+        filingDate:
+          type: string
+          format: date
+          description: Date the application was filed
+        registrationDate:
+          type: string
+          format: date
+          nullable: true
+          description: Date the trademark was registered
+        ownerName:
+          type: string
+          description: Name of the trademark owner
+        goodsAndServices:
+          type: string
+          description: Description of goods and services
+        internationalClasses:
+          type: array
+          items:
+            type: integer
+          description: International Nice Classification class numbers
+    TrademarkAvailabilityResponse:
+      type: object
+      properties:
+        keyword:
+          type: string
+          description: The keyword that was checked
+        available:
+          type: boolean
+          description: Whether the keyword appears to be available for trademark registration
+        conflictingMarks:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrademarkSummary'
+          description: List of existing marks that may conflict with the keyword
+  securitySchemes:
+    RapidAPIKey:
+      type: apiKey
+      in: header
+      name: X-RapidAPI-Key
+      description: RapidAPI subscription key
