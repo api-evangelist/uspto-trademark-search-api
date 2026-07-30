@@ -6,6 +6,19 @@ description: >-
   Trademark Office data. Updated daily. Enables trademark availability checking, portfolio research, competitive
   intelligence, and due diligence workflows.
 type: Collection
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: >-
   https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
 access: Public
@@ -26,51 +39,149 @@ specificationVersion: '0.19'
 url: https://raw.githubusercontent.com/api-evangelist/uspto-trademark-search-api/refs/heads/main/apis.yml
 position: Provider
 apis:
-  - aid: uspto-trademark-search-api:uspto-trademark-search-api
-    name: USPTO Trademark Search API Endpoints
-    description: >-
-      The core API for accessing USPTO trademark data, offering various search and retrieval functionalities including
-      keyword search, availability check, serial number lookups, owner searches, and database status information. It
-      supports batch processing and pagination.
-    tags:
-      - Brand Protection
-      - Data Retrieval
-      - Legal Research
-      - Trademark Search
-      - USPTO Data
-    image: >-
-      https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
-    baseURL: https://uspto-trademark.p.rapidapi.com
-    humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
-    contact:
-      - FN: MartonKodok
-        email: android482-one@yahoo.com
-        X-twitter: martonkodok
-    properties:
-      - url: https://rapidapi.com/pentium10/api/uspto-trademark
-        type: Documentation
-      - url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
-        type: FAQ
-      - url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
-        type: Pricing
-      - url: https://medium.com/p/71274363605b
-        type: Blog
-        description: USPTO Trademark API — Search trademark & owner database — part 1
-      - url: https://medium.com/p/19efc7e1cc6
-        type: Blog
-        description: Implementing trademark availability and search using USPTO Trademark API — part 2
-      - url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
-        type: StatusPage
-        description: Database freshness and update information available via /v1/databaseStatus endpoint.
-      - url: https://rapidapi.com/terms/
-        type: TermsOfService
-      - type: OpenAPI
-        url: openapi/uspto-trademark-search-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/uspto-trademark-search-api-trademark-schema.json
-      - type: JSONStructure
-        url: json-structure/uspto-trademark-search-api-trademark-structure.json
+- aid: uspto-trademark-search-api:uspto-trademark-search-api-database-status-api
+  name: USPTO Trademark Search API Database Status API
+  description: Database freshness and update information
+  humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
+  baseURL: https://uspto-trademark.p.rapidapi.com
+  tags:
+  - Database Status
+  properties:
+  - type: OpenAPI
+    url: openapi/uspto-trademark-search-api-database-status-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/pentium10/api/uspto-trademark
+  - type: FAQ
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
+  - type: Pricing
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
+  - type: Blog
+    url: https://medium.com/p/71274363605b
+  - type: Blog
+    url: https://medium.com/p/19efc7e1cc6
+  - type: StatusPage
+    url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
+  - type: TermsOfService
+    url: https://rapidapi.com/terms/
+  - type: JSONSchema
+    url: json-schema/uspto-trademark-search-api-trademark-schema.json
+  - type: JSONStructure
+    url: json-structure/uspto-trademark-search-api-trademark-structure.json
+- aid: uspto-trademark-search-api:uspto-trademark-search-api-owner-search-api
+  name: USPTO Trademark Search API Owner Search API
+  description: Search trademarks by owner name
+  humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
+  baseURL: https://uspto-trademark.p.rapidapi.com
+  tags:
+  - Owner Search
+  properties:
+  - type: OpenAPI
+    url: openapi/uspto-trademark-search-api-owner-search-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/pentium10/api/uspto-trademark
+  - type: FAQ
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
+  - type: Pricing
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
+  - type: Blog
+    url: https://medium.com/p/71274363605b
+  - type: Blog
+    url: https://medium.com/p/19efc7e1cc6
+  - type: StatusPage
+    url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
+  - type: TermsOfService
+    url: https://rapidapi.com/terms/
+  - type: JSONSchema
+    url: json-schema/uspto-trademark-search-api-trademark-schema.json
+  - type: JSONStructure
+    url: json-structure/uspto-trademark-search-api-trademark-structure.json
+- aid: uspto-trademark-search-api:uspto-trademark-search-api-trademark-availability-api
+  name: USPTO Trademark Search API Trademark Availability API
+  description: Check if a trademark is available for registration
+  humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
+  baseURL: https://uspto-trademark.p.rapidapi.com
+  tags:
+  - Trademark Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/uspto-trademark-search-api-trademark-availability-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/pentium10/api/uspto-trademark
+  - type: FAQ
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
+  - type: Pricing
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
+  - type: Blog
+    url: https://medium.com/p/71274363605b
+  - type: Blog
+    url: https://medium.com/p/19efc7e1cc6
+  - type: StatusPage
+    url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
+  - type: TermsOfService
+    url: https://rapidapi.com/terms/
+  - type: JSONSchema
+    url: json-schema/uspto-trademark-search-api-trademark-schema.json
+  - type: JSONStructure
+    url: json-structure/uspto-trademark-search-api-trademark-structure.json
+- aid: uspto-trademark-search-api:uspto-trademark-search-api-trademark-lookup-api
+  name: USPTO Trademark Search API Trademark Lookup API
+  description: Retrieve trademark details by serial number
+  humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
+  baseURL: https://uspto-trademark.p.rapidapi.com
+  tags:
+  - Trademark Lookup
+  properties:
+  - type: OpenAPI
+    url: openapi/uspto-trademark-search-api-trademark-lookup-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/pentium10/api/uspto-trademark
+  - type: FAQ
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
+  - type: Pricing
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
+  - type: Blog
+    url: https://medium.com/p/71274363605b
+  - type: Blog
+    url: https://medium.com/p/19efc7e1cc6
+  - type: StatusPage
+    url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
+  - type: TermsOfService
+    url: https://rapidapi.com/terms/
+  - type: JSONSchema
+    url: json-schema/uspto-trademark-search-api-trademark-schema.json
+  - type: JSONStructure
+    url: json-structure/uspto-trademark-search-api-trademark-structure.json
+- aid: uspto-trademark-search-api:uspto-trademark-search-api-trademark-search-api
+  name: USPTO Trademark Search API Trademark Search API
+  description: Search trademarks by keyword or phrase
+  humanURL: https://rapidapi.com/pentium10/api/uspto-trademark
+  baseURL: https://uspto-trademark.p.rapidapi.com
+  tags:
+  - Trademark Search
+  properties:
+  - type: OpenAPI
+    url: openapi/uspto-trademark-search-api-trademark-search-api-openapi.yml
+  - type: Documentation
+    url: https://rapidapi.com/pentium10/api/uspto-trademark
+  - type: FAQ
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/tutorials/faq-
+  - type: Pricing
+    url: https://rapidapi.com/pentium10/api/uspto-trademark/pricing
+  - type: Blog
+    url: https://medium.com/p/71274363605b
+  - type: Blog
+    url: https://medium.com/p/19efc7e1cc6
+  - type: StatusPage
+    url: https://rapidapi.com/pentium10/api/uspto-trademark#endpoints
+  - type: TermsOfService
+    url: https://rapidapi.com/terms/
+  - type: JSONSchema
+    url: json-schema/uspto-trademark-search-api-trademark-schema.json
+  - type: JSONStructure
+    url: json-structure/uspto-trademark-search-api-trademark-structure.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/uspto-trademark-search-api/overview
   - type: AgenticAccess
     url: agentic-access/uspto-trademark-search-api-agentic-access.yml
   - type: DomainSecurity
