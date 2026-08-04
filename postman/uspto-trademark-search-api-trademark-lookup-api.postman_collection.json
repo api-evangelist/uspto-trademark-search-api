@@ -1,0 +1,197 @@
+{
+  "info": {
+    "_postman_id": "5248ff3a-9cb3-4e1a-adf4-69a4f77668dc",
+    "name": "USPTO Trademark Search Database Status Trademark Lookup API",
+    "description": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:16.000Z",
+    "updatedAt": "2026-07-28T03:26:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5248ff3a-9cb3-4e1a-adf4-69a4f77668dc"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "trademarkBySerial",
+          "item": [
+            {
+              "name": "{serialNumber}",
+              "item": [
+                {
+                  "name": "Get Trademark by Serial Number",
+                  "id": "b2800419-2228-4e0a-b335-403247774c79",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/trademarkBySerial/:serialNumber",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "trademarkBySerial",
+                        ":serialNumber"
+                      ],
+                      "variable": [
+                        {
+                          "id": "942f1edf-e8bc-4378-a4bd-eee90c3b6e29",
+                          "key": "serialNumber",
+                          "value": "47528590",
+                          "description": "(Required) The USPTO trademark serial number (8 digits)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves complete trademark information for a specific trademark using its USPTO serial number. Returns all filing details, status history, owner information, goods/services classifications, and prosecution history."
+                  },
+                  "response": [
+                    {
+                      "id": "275a5f2b-4392-4c25-b482-f1734bd0f4c7",
+                      "name": "Trademark details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-RapidAPI-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/trademarkBySerial/:serialNumber",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "trademarkBySerial",
+                            ":serialNumber"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serialNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"serialNumber\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"wordMark\": \"<string>\",\n  \"status\": \"<string>\",\n  \"statusCode\": \"<string>\",\n  \"filingDate\": \"<date>\",\n  \"registrationDate\": \"<date>\",\n  \"ownerName\": \"<string>\",\n  \"goodsAndServices\": \"<string>\",\n  \"internationalClasses\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"description\": \"<string>\",\n  \"ownerAddress\": \"<string>\",\n  \"ownerCity\": \"<string>\",\n  \"ownerState\": \"<string>\",\n  \"ownerCountry\": \"<string>\",\n  \"ownerPostalCode\": \"<string>\",\n  \"correspondentName\": \"<string>\",\n  \"correspondentAddress\": \"<string>\",\n  \"markType\": \"<string>\",\n  \"distinctivenessClaim\": \"<string>\",\n  \"firstUsedDate\": \"<date>\",\n  \"firstUsedInCommerceDate\": \"<date>\",\n  \"prosecutionHistory\": [\n    {\n      \"date\": \"<date>\",\n      \"code\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"date\": \"<date>\",\n      \"code\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:26:17.000Z",
+                      "updatedAt": "2026-07-28T03:26:17.000Z",
+                      "uid": "35240-275a5f2b-4392-4c25-b482-f1734bd0f4c7"
+                    },
+                    {
+                      "id": "434faf40-12d7-4169-b9ca-913a2d94ab13",
+                      "name": "Serial number not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-RapidAPI-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/trademarkBySerial/:serialNumber",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "trademarkBySerial",
+                            ":serialNumber"
+                          ],
+                          "variable": [
+                            {
+                              "key": "serialNumber"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:26:17.000Z",
+                      "updatedAt": "2026-07-28T03:26:17.000Z",
+                      "uid": "35240-434faf40-12d7-4169-b9ca-913a2d94ab13"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:26:17.000Z",
+                  "updatedAt": "2026-07-28T03:26:17.000Z",
+                  "uid": "35240-b2800419-2228-4e0a-b335-403247774c79"
+                }
+              ],
+              "id": "191f61ce-12d6-43ec-9a50-25dbec08ead4",
+              "createdAt": "2026-07-28T03:26:17.000Z",
+              "updatedAt": "2026-07-28T03:26:17.000Z",
+              "uid": "35240-191f61ce-12d6-43ec-9a50-25dbec08ead4"
+            }
+          ],
+          "id": "9bca474f-fc6d-4ec5-978e-78f066d91bc7",
+          "createdAt": "2026-07-28T03:26:17.000Z",
+          "updatedAt": "2026-07-28T03:26:17.000Z",
+          "uid": "35240-9bca474f-fc6d-4ec5-978e-78f066d91bc7"
+        }
+      ],
+      "id": "7b9f73aa-3b81-48a6-acae-64e875d516a3",
+      "createdAt": "2026-07-28T03:26:17.000Z",
+      "updatedAt": "2026-07-28T03:26:17.000Z",
+      "uid": "35240-7b9f73aa-3b81-48a6-acae-64e875d516a3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://uspto-trademark.p.rapidapi.com"
+    }
+  ]
+}

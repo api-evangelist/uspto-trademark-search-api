@@ -1,0 +1,22 @@
+{
+  "provider": "uspto-trademark-search-api",
+  "sources": [
+    "uspto-trademark-search-api-database-status-api-openapi.yml",
+    "uspto-trademark-search-api-owner-search-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-availability-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-lookup-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "uspto-trademark-search-api-database-status-api-openapi.yml",
+    "uspto-trademark-search-api-owner-search-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-availability-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-lookup-api-openapi.yml",
+    "uspto-trademark-search-api-trademark-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

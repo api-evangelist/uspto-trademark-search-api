@@ -1,0 +1,309 @@
+{
+  "info": {
+    "_postman_id": "76ac905e-3710-440e-9fd2-feb5e4195aa4",
+    "name": "USPTO Database Status Trademark Search API",
+    "description": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:17.000Z",
+    "updatedAt": "2026-07-28T03:26:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-76ac905e-3710-440e-9fd2-feb5e4195aa4"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "trademarkSearch",
+          "item": [
+            {
+              "name": "{keyword}",
+              "item": [
+                {
+                  "name": "{searchType}",
+                  "item": [
+                    {
+                      "name": "Search Trademarks by Keyword",
+                      "id": "f9919039-023b-451b-a4d6-fcf11ddcdbc6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/trademarkSearch/:keyword/:searchType",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "trademarkSearch",
+                            ":keyword",
+                            ":searchType"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2ac20008-160b-49bb-b77a-1ebb4b35f1df",
+                              "key": "keyword",
+                              "value": "<string>",
+                              "description": "(Required) The trademark keyword or phrase to search for"
+                            },
+                            {
+                              "id": "b0c318c4-d9fe-47ed-8761-5f9fe6288a94",
+                              "key": "searchType",
+                              "value": "active",
+                              "description": "(Required) Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+                            }
+                          ]
+                        },
+                        "description": "Searches active and inactive trademarks in the USPTO database by keyword. Returns matching trademarks with their current status, registration numbers, owner details, and goods/services classifications. Supports pagination for large result sets."
+                      },
+                      "response": [
+                        {
+                          "id": "f6e9be94-2a54-44cc-bc6e-269b11f6f214",
+                          "name": "Trademark search results",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-RapidAPI-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/trademarkSearch/:keyword/:searchType",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "trademarkSearch",
+                                ":keyword",
+                                ":searchType"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "keyword"
+                                },
+                                {
+                                  "key": "searchType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"serialNumber\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"wordMark\": \"<string>\",\n      \"status\": \"<string>\",\n      \"statusCode\": \"<string>\",\n      \"filingDate\": \"<date>\",\n      \"registrationDate\": \"<date>\",\n      \"ownerName\": \"<string>\",\n      \"goodsAndServices\": \"<string>\",\n      \"internationalClasses\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"serialNumber\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"wordMark\": \"<string>\",\n      \"status\": \"<string>\",\n      \"statusCode\": \"<string>\",\n      \"filingDate\": \"<date>\",\n      \"registrationDate\": \"<date>\",\n      \"ownerName\": \"<string>\",\n      \"goodsAndServices\": \"<string>\",\n      \"internationalClasses\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"page\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T03:26:18.000Z",
+                          "updatedAt": "2026-07-28T03:26:18.000Z",
+                          "uid": "35240-f6e9be94-2a54-44cc-bc6e-269b11f6f214"
+                        },
+                        {
+                          "id": "8a983135-16d8-4ad6-9770-3a486691d31a",
+                          "name": "Invalid search parameters",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-RapidAPI-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/trademarkSearch/:keyword/:searchType",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "trademarkSearch",
+                                ":keyword",
+                                ":searchType"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "keyword"
+                                },
+                                {
+                                  "key": "searchType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:26:18.000Z",
+                          "updatedAt": "2026-07-28T03:26:18.000Z",
+                          "uid": "35240-8a983135-16d8-4ad6-9770-3a486691d31a"
+                        },
+                        {
+                          "id": "2f7439b9-9f48-417e-8a0c-4d47c28f2fbe",
+                          "name": "Invalid or missing RapidAPI key",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-RapidAPI-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/trademarkSearch/:keyword/:searchType",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "trademarkSearch",
+                                ":keyword",
+                                ":searchType"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "keyword"
+                                },
+                                {
+                                  "key": "searchType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:26:18.000Z",
+                          "updatedAt": "2026-07-28T03:26:18.000Z",
+                          "uid": "35240-2f7439b9-9f48-417e-8a0c-4d47c28f2fbe"
+                        },
+                        {
+                          "id": "eb44e8b4-092a-4251-be09-4931dbe98257",
+                          "name": "Rate limit exceeded",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-RapidAPI-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/trademarkSearch/:keyword/:searchType",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "trademarkSearch",
+                                ":keyword",
+                                ":searchType"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "keyword"
+                                },
+                                {
+                                  "key": "searchType"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:26:18.000Z",
+                          "updatedAt": "2026-07-28T03:26:18.000Z",
+                          "uid": "35240-eb44e8b4-092a-4251-be09-4931dbe98257"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:26:18.000Z",
+                      "updatedAt": "2026-07-28T03:26:18.000Z",
+                      "uid": "35240-f9919039-023b-451b-a4d6-fcf11ddcdbc6"
+                    }
+                  ],
+                  "id": "e6ae3509-1899-45c9-8091-797e96520e02",
+                  "createdAt": "2026-07-28T03:26:18.000Z",
+                  "updatedAt": "2026-07-28T03:26:18.000Z",
+                  "uid": "35240-e6ae3509-1899-45c9-8091-797e96520e02"
+                }
+              ],
+              "id": "9803bb45-3ac0-4170-bed8-b2452041865c",
+              "createdAt": "2026-07-28T03:26:18.000Z",
+              "updatedAt": "2026-07-28T03:26:18.000Z",
+              "uid": "35240-9803bb45-3ac0-4170-bed8-b2452041865c"
+            }
+          ],
+          "id": "f2ce644a-16ac-425c-bc72-5a909a28bb31",
+          "createdAt": "2026-07-28T03:26:18.000Z",
+          "updatedAt": "2026-07-28T03:26:18.000Z",
+          "uid": "35240-f2ce644a-16ac-425c-bc72-5a909a28bb31"
+        }
+      ],
+      "id": "bd1c48d7-0ca3-4c69-a667-ce53370c98e8",
+      "createdAt": "2026-07-28T03:26:18.000Z",
+      "updatedAt": "2026-07-28T03:26:18.000Z",
+      "uid": "35240-bd1c48d7-0ca3-4c69-a667-ce53370c98e8"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://uspto-trademark.p.rapidapi.com"
+    }
+  ]
+}

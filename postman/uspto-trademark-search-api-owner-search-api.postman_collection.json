@@ -1,0 +1,218 @@
+{
+  "info": {
+    "_postman_id": "315aa9ba-8e18-430d-8897-5b0cf92a9955",
+    "name": "USPTO Trademark Search Database Status Owner Search API",
+    "description": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:26:00.000Z",
+    "updatedAt": "2026-07-28T03:26:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-315aa9ba-8e18-430d-8897-5b0cf92a9955"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "trademarkOwner",
+          "item": [
+            {
+              "name": "{owner}",
+              "item": [
+                {
+                  "name": "Search Trademarks by Owner",
+                  "id": "7a58e5ab-7413-406c-8ab3-f49018ecb85d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/trademarkOwner/:owner?page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "trademarkOwner",
+                        ":owner"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination (1-based)",
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "99bd9637-c00c-44ec-9a77-0cbc88b0d654",
+                          "key": "owner",
+                          "value": "<string>",
+                          "description": "(Required) The trademark owner name (individual or company)"
+                        }
+                      ]
+                    },
+                    "description": "Searches the USPTO trademark database for all trademarks owned by a specific individual or organization. Useful for brand portfolio analysis, competitive intelligence, and due diligence research."
+                  },
+                  "response": [
+                    {
+                      "id": "f8b0d7db-b31b-48ac-930b-d13ac00a05dd",
+                      "name": "Trademarks owned by the specified owner",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-RapidAPI-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/trademarkOwner/:owner?page=1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "trademarkOwner",
+                            ":owner"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page number for pagination (1-based)",
+                              "key": "page",
+                              "value": "1"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "owner"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"owner\": \"<string>\",\n  \"count\": \"<integer>\",\n  \"items\": [\n    {\n      \"serialNumber\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"wordMark\": \"<string>\",\n      \"status\": \"<string>\",\n      \"statusCode\": \"<string>\",\n      \"filingDate\": \"<date>\",\n      \"registrationDate\": \"<date>\",\n      \"ownerName\": \"<string>\",\n      \"goodsAndServices\": \"<string>\",\n      \"internationalClasses\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    },\n    {\n      \"serialNumber\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"wordMark\": \"<string>\",\n      \"status\": \"<string>\",\n      \"statusCode\": \"<string>\",\n      \"filingDate\": \"<date>\",\n      \"registrationDate\": \"<date>\",\n      \"ownerName\": \"<string>\",\n      \"goodsAndServices\": \"<string>\",\n      \"internationalClasses\": [\n        \"<integer>\",\n        \"<integer>\"\n      ]\n    }\n  ],\n  \"page\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:26:01.000Z",
+                      "updatedAt": "2026-07-28T03:26:01.000Z",
+                      "uid": "35240-f8b0d7db-b31b-48ac-930b-d13ac00a05dd"
+                    },
+                    {
+                      "id": "262c9422-7e1b-4a3b-a4c2-614c5bb3118c",
+                      "name": "No trademarks found for owner",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-RapidAPI-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/trademarkOwner/:owner?page=1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "trademarkOwner",
+                            ":owner"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page number for pagination (1-based)",
+                              "key": "page",
+                              "value": "1"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "owner"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:26:01.000Z",
+                      "updatedAt": "2026-07-28T03:26:01.000Z",
+                      "uid": "35240-262c9422-7e1b-4a3b-a4c2-614c5bb3118c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:26:01.000Z",
+                  "updatedAt": "2026-07-28T03:26:01.000Z",
+                  "uid": "35240-7a58e5ab-7413-406c-8ab3-f49018ecb85d"
+                }
+              ],
+              "id": "80a368f8-06cd-46f5-a037-d08c1dc93588",
+              "createdAt": "2026-07-28T03:26:01.000Z",
+              "updatedAt": "2026-07-28T03:26:01.000Z",
+              "uid": "35240-80a368f8-06cd-46f5-a037-d08c1dc93588"
+            }
+          ],
+          "id": "d4f7dc72-7fd1-4565-9fd8-93168f3acf6b",
+          "createdAt": "2026-07-28T03:26:01.000Z",
+          "updatedAt": "2026-07-28T03:26:01.000Z",
+          "uid": "35240-d4f7dc72-7fd1-4565-9fd8-93168f3acf6b"
+        }
+      ],
+      "id": "01d2f0da-2ebd-40bd-9001-acbe3bab848a",
+      "createdAt": "2026-07-28T03:26:01.000Z",
+      "updatedAt": "2026-07-28T03:26:01.000Z",
+      "uid": "35240-01d2f0da-2ebd-40bd-9001-acbe3bab848a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://uspto-trademark.p.rapidapi.com"
+    }
+  ]
+}
