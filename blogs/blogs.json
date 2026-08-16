@@ -13,23 +13,26 @@
       "feed_url": "https://medium.com/p/71274363605b",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "fetch_failed: HTTPError"
     },
     {
       "source": "https://medium.com/p/19efc7e1cc6",
       "feed_url": "https://medium.com/p/19efc7e1cc6",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     },
     {
       "source": "https://rapidapi.com/pentium10/api/uspto-trademark/pricing",
       "feed_url": "https://rapidapi.com/pentium10/api/uspto-trademark/pricing",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "fetched": "2026-08-06T14:08:46Z",
+  "fetched": "2026-08-15T12:11:08Z",
   "post_count": 10
 }
