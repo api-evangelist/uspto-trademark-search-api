@@ -35,7 +35,7 @@ tags:
   - USPTO
 created: '2025-05-27'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/uspto-trademark-search-api/refs/heads/main/apis.yml
 position: Provider
 apis:
