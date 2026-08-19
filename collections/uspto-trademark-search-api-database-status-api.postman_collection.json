@@ -1,0 +1,129 @@
+{
+  "item": [
+    {
+      "id": "01c64314-c52c-4f16-8e78-072b439d277f",
+      "name": "Database Status",
+      "description": {
+        "content": "Database freshness and update information",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64912b35-0794-40cf-9aa0-052649ee3ff3",
+          "name": "Get Database Status",
+          "request": {
+            "name": "Get Database Status",
+            "description": {
+              "content": "Returns the current status of the USPTO trademark database including the last update date, record count, and database health information. Use this endpoint to verify data freshness before performing trademark searches.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "databaseStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a51ad29-8421-4cf0-915a-0e897c845332",
+              "name": "Database status information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "databaseStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lastUpdated\": \"2013-03-10T22:15:14.704Z\",\n  \"recordCount\": 1876,\n  \"status\": \"DEGRADED\",\n  \"version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uspto-trademark.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a04b0fb2-fb04-44b6-85da-f0e39a2210d7",
+    "name": "USPTO Trademark Search Database Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+      "type": "text/plain"
+    }
+  }
+}

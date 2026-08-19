@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Database Status Trademark Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trademarks by Keyword",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkSearch/:keyword/:searchType",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "apple",
+                "type": "path",
+                "description": "The trademark keyword or phrase to search for"
+              },
+              {
+                "name": "searchType",
+                "value": "active",
+                "type": "path",
+                "description": "Type of search to perform. Use 'active' for active trademarks only, or 'all' for both active and inactive marks."
+              }
+            ]
+          },
+          "docs": "Searches active and inactive trademarks in the USPTO database by keyword. Returns matching trademarks with their current status, registration numbers, owner details, and goods/services classifications. Supports pagination for large result sets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

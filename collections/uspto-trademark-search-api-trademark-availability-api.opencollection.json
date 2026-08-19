@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Trademark Search Database Status Trademark Availability API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Trademark Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkAvailable/:keyword",
+            "params": [
+              {
+                "name": "keyword",
+                "value": "novabrand",
+                "type": "path",
+                "description": "The trademark keyword to check for availability"
+              }
+            ]
+          },
+          "docs": "Checks whether a trademark keyword is available for registration by searching for identical or confusingly similar marks in the USPTO database. Returns availability status and any conflicting marks found."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

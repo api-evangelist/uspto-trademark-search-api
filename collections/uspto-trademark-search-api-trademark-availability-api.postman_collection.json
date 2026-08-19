@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "50277520-43f5-4b8a-b3ad-dc733e7d7990",
+      "name": "Trademark Availability",
+      "description": {
+        "content": "Check if a trademark is available for registration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0de94cce-c075-4352-a518-503683c9dd44",
+          "name": "Check Trademark Availability",
+          "request": {
+            "name": "Check Trademark Availability",
+            "description": {
+              "content": "Checks whether a trademark keyword is available for registration by searching for identical or confusingly similar marks in the USPTO database. Returns availability status and any conflicting marks found.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkAvailable",
+                ":keyword"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keyword",
+                  "description": "(Required) The trademark keyword to check for availability"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c25aa221-85eb-4156-9f41-a17d665abdda",
+              "name": "Trademark availability check result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"keyword\": \"string\",\n  \"available\": false,\n  \"conflictingMarks\": [\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1970-12-24\",\n      \"registrationDate\": \"2024-08-12\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        7062,\n        6787\n      ]\n    },\n    {\n      \"serialNumber\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"wordMark\": \"string\",\n      \"status\": \"string\",\n      \"statusCode\": \"string\",\n      \"filingDate\": \"1989-12-03\",\n      \"registrationDate\": \"1974-03-23\",\n      \"ownerName\": \"string\",\n      \"goodsAndServices\": \"string\",\n      \"internationalClasses\": [\n        4732,\n        7441\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dbc2640c-3506-4f15-b35c-4a3f440c2f69",
+              "name": "Invalid keyword",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9945766d-42f7-4c47-b169-329b345ad0f6",
+              "name": "Invalid or missing RapidAPI key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkAvailable",
+                    ":keyword"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keyword",
+                      "description": "(Required) The trademark keyword to check for availability"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uspto-trademark.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6b2236c2-34f5-4d0f-88a3-9a06b1440821",
+    "name": "USPTO Trademark Search Database Status Trademark Availability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+      "type": "text/plain"
+    }
+  }
+}

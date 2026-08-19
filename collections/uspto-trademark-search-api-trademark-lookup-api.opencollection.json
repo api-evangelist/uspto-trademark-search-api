@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Trademark Search Database Status Trademark Lookup API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trademark Lookup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trademark by Serial Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkBySerial/:serialNumber",
+            "params": [
+              {
+                "name": "serialNumber",
+                "value": "88123456",
+                "type": "path",
+                "description": "The USPTO trademark serial number (8 digits)"
+              }
+            ]
+          },
+          "docs": "Retrieves complete trademark information for a specific trademark using its USPTO serial number. Returns all filing details, status history, owner information, goods/services classifications, and prosecution history."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

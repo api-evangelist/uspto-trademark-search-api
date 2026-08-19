@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "6e0b2d0d-b159-4523-ac27-46b4c2156a6a",
+      "name": "Trademark Lookup",
+      "description": {
+        "content": "Retrieve trademark details by serial number",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4bd4000a-9a88-42ae-a425-bbb79b24233c",
+          "name": "Get Trademark by Serial Number",
+          "request": {
+            "name": "Get Trademark by Serial Number",
+            "description": {
+              "content": "Retrieves complete trademark information for a specific trademark using its USPTO serial number. Returns all filing details, status history, owner information, goods/services classifications, and prosecution history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "trademarkBySerial",
+                ":serialNumber"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serialNumber",
+                  "description": "(Required) The USPTO trademark serial number (8 digits)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a2968a2-625e-4fb0-aa0e-0b379866629c",
+              "name": "Trademark details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkBySerial",
+                    ":serialNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serialNumber",
+                      "description": "(Required) The USPTO trademark serial number (8 digits)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serialNumber\": \"string\",\n  \"registrationNumber\": \"string\",\n  \"wordMark\": \"string\",\n  \"status\": \"string\",\n  \"statusCode\": \"string\",\n  \"filingDate\": \"2014-11-09\",\n  \"registrationDate\": \"2016-06-06\",\n  \"ownerName\": \"string\",\n  \"goodsAndServices\": \"string\",\n  \"internationalClasses\": [\n    1016,\n    7073\n  ],\n  \"description\": \"string\",\n  \"ownerAddress\": \"string\",\n  \"ownerCity\": \"string\",\n  \"ownerState\": \"string\",\n  \"ownerCountry\": \"string\",\n  \"ownerPostalCode\": \"string\",\n  \"correspondentName\": \"string\",\n  \"correspondentAddress\": \"string\",\n  \"markType\": \"string\",\n  \"distinctivenessClaim\": \"string\",\n  \"firstUsedDate\": \"2024-02-14\",\n  \"firstUsedInCommerceDate\": \"2012-10-21\",\n  \"prosecutionHistory\": [\n    {\n      \"date\": \"2000-08-14\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"date\": \"1996-10-18\",\n      \"code\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a0b80f7-49d0-426e-8cdd-ec9ceb336726",
+              "name": "Serial number not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "trademarkBySerial",
+                    ":serialNumber"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serialNumber",
+                      "description": "(Required) The USPTO trademark serial number (8 digits)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-RapidAPI-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://uspto-trademark.p.rapidapi.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-RapidAPI-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e399be8c-97b9-4b9b-93e0-300c03842b18",
+    "name": "USPTO Trademark Search Database Status Trademark Lookup API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.\n\nContact Support:\n Name: MartonKodok\n Email: android482-one@yahoo.com",
+      "type": "text/plain"
+    }
+  }
+}

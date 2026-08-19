@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "USPTO Trademark Search Database Status Owner Search API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-RapidAPI-Key",
+      "value": "{{X-RapidAPI-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Owner Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Trademarks by Owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://uspto-trademark.p.rapidapi.com/v1/trademarkOwner/:owner",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Apple Inc.",
+                "type": "path",
+                "description": "The trademark owner name (individual or company)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination (1-based)"
+              }
+            ]
+          },
+          "docs": "Searches the USPTO trademark database for all trademarks owned by a specific individual or organization. Useful for brand portfolio analysis, competitive intelligence, and due diligence research."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
