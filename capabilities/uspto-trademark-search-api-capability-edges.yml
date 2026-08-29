@@ -1,0 +1,55 @@
+slug: uspto-trademark-search-api
+provider: USPTO Trademark Search API
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: Trademark Availability
+  spec_file: uspto-trademark-search-api-trademark-availability-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.75
+  evidence: GET /v1/trademarkAvailable/{keyword}  Check Trademark Availability; Check if a trademark keyword
+    is available
+  reason: Clearance/availability checking of a candidate mark is a core pre-filing trademark management
+    activity (BC-840.20 - trademark filing, watch, defence).
+- tag: Trademark Search
+  spec_file: uspto-trademark-search-api-trademark-search-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.72
+  evidence: '"Search Trademarks by Keyword" ... "Enables trademark availability checking, portfolio research,
+    competitive intelligence, and due diligence workflows"'
+  reason: Operations search the USPTO trademark register for availability and brand-protection research,
+    which serves trademark filing/watch activity (Trademark Management). It is a read-only data lookup
+    rather than government-side registration, so confidence is moderate.
+- tag: Owner Search
+  spec_file: uspto-trademark-search-api-owner-search-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.7
+  evidence: GET /v1/trademarkOwner/{owner}  Search Trademarks by Owner; enables trademark availability
+    checking, portfolio research, competitive intelligence, and due diligence workflows
+  reason: Searching trademarks by owner supports trademark portfolio research and watch activity, which
+    sits in BC-840.20 Trademark Management.
+- tag: Trademark Lookup
+  spec_file: uspto-trademark-search-api-trademark-lookup-api-openapi.yml
+  capability_id: BC-840.20
+  capability_id_l1: BC-840
+  capability_name: Trademark Management
+  confidence: 0.7
+  evidence: 'GET /v1/trademarkBySerial/{serialNumber}  Get Trademark by Serial Number; schemas: TrademarkDetail'
+  reason: Lookup of trademark records by serial number returning trademark detail — trademark record research
+    and watch, i.e. BC-840.20.
