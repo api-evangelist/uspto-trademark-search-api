@@ -9,21 +9,27 @@
       "method": "feed"
     },
     {
-      "source": "https://medium.com/p/71274363605b",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://medium.com/p/19efc7e1cc6",
-      "error": "HTTPError"
-    },
-    {
       "source": "https://rapidapi.com/pentium10/api/uspto-trademark/pricing",
       "feed_url": "https://rapidapi.com/pentium10/api/uspto-trademark/pricing",
       "title": "",
       "saved": 0,
       "method": "none"
+    },
+    {
+      "source": "https://medium.com/p/71274363605b",
+      "feed_url": "https://medium.com/p/71274363605b",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://medium.com/p/19efc7e1cc6",
+      "feed_url": "https://medium.com/p/19efc7e1cc6",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-08-22T20:20:02Z",
-  "post_count": 10
+  "fetched": "2026-08-30T22:33:40Z",
+  "post_count": 11
 }
