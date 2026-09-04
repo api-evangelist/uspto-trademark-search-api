@@ -25,11 +25,12 @@ accessModel:
   try_now: true
   public: false
   label: Freemium · Self-serve signup
-  confidence: high
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: >-
   https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
@@ -49,7 +50,7 @@ created: '2025-05-27'
 modified: '2026-05-19'
 specificationVersion: '0.23'
 url: https://raw.githubusercontent.com/api-evangelist/uspto-trademark-search-api/refs/heads/main/apis.yml
-position: Provider
+position: Producing
 apis:
 - aid: uspto-trademark-search-api:uspto-trademark-search-api-database-status-api
   name: USPTO Trademark Search API Database Status API
