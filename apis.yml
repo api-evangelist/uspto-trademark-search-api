@@ -193,6 +193,8 @@ apis:
   - type: JSONStructure
     url: json-structure/uspto-trademark-search-api-trademark-structure.json
 common:
+  - type: Website
+    url: https://www.rapidapi.com/
   - type: CapabilityMap
     url: capabilities/uspto-trademark-search-api-capability-edges.yml
     name: USPTO Trademark Search API Business Capability Map
