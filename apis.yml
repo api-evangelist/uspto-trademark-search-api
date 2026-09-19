@@ -36,6 +36,17 @@ image: >-
   https://rapidapi.com/hub/_next/image?url=https%3A%2F%2Frapidapi-prod-apis.s3.amazonaws.com%2F9440240c-7bf2-4af0-8232-375b0bb7327f_medium&w=1920&q=75
 access: Public
 tags:
+  - Brands
+  - Brand Protection
+  - Business
+  - Data
+  - Government Data
+  - Intellectual Property
+  - Legal
+  - Search
+  - Trademarks
+  - USPTO
+tags_raw:
   - Brand
   - Brand Protection
   - Business
