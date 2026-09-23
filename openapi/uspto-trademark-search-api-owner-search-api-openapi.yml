@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: USPTO Trademark Search Database Status Owner Search API
+  title: USPTO Trademark Search Owner Search API
   description: The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.
   version: '1.0'
   contact:
@@ -51,6 +51,21 @@ paths:
           description: No trademarks found for owner
 components:
   schemas:
+    TrademarkOwnerResponse:
+      type: object
+      properties:
+        owner:
+          type: string
+          description: The owner name that was searched
+        count:
+          type: integer
+          description: Total number of trademarks found
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/TrademarkSummary'
+        page:
+          type: integer
     TrademarkSummary:
       type: object
       properties:
@@ -90,21 +105,6 @@ components:
           items:
             type: integer
           description: International Nice Classification class numbers
-    TrademarkOwnerResponse:
-      type: object
-      properties:
-        owner:
-          type: string
-          description: The owner name that was searched
-        count:
-          type: integer
-          description: Total number of trademarks found
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/TrademarkSummary'
-        page:
-          type: integer
   securitySchemes:
     RapidAPIKey:
       type: apiKey

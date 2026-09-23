@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: USPTO Trademark Search Database Status Trademark Lookup API
+  title: USPTO Trademark Search Trademark Lookup API
   description: The USPTO Trademark Search API provides access to United States Patent and Trademark Office trademark data via RapidAPI. It enables developers to search active trademarks by keyword, check trademark availability, perform serial number lookups, search by owner, and retrieve database status information. The API is maintained by MartonKodok and updated daily from USPTO data. Supports batch processing and pagination for high-volume trademark research.
   version: '1.0'
   contact:
@@ -44,45 +44,6 @@ paths:
           description: Serial number not found
 components:
   schemas:
-    TrademarkSummary:
-      type: object
-      properties:
-        serialNumber:
-          type: string
-          description: USPTO trademark serial number
-        registrationNumber:
-          type: string
-          nullable: true
-          description: USPTO registration number (if registered)
-        wordMark:
-          type: string
-          description: The text of the trademark
-        status:
-          type: string
-          description: Current status of the trademark
-        statusCode:
-          type: string
-          description: USPTO status code
-        filingDate:
-          type: string
-          format: date
-          description: Date the application was filed
-        registrationDate:
-          type: string
-          format: date
-          nullable: true
-          description: Date the trademark was registered
-        ownerName:
-          type: string
-          description: Name of the trademark owner
-        goodsAndServices:
-          type: string
-          description: Description of goods and services
-        internationalClasses:
-          type: array
-          items:
-            type: integer
-          description: International Nice Classification class numbers
     TrademarkDetail:
       allOf:
       - $ref: '#/components/schemas/TrademarkSummary'
@@ -133,6 +94,45 @@ components:
                   type: string
                 description:
                   type: string
+    TrademarkSummary:
+      type: object
+      properties:
+        serialNumber:
+          type: string
+          description: USPTO trademark serial number
+        registrationNumber:
+          type: string
+          nullable: true
+          description: USPTO registration number (if registered)
+        wordMark:
+          type: string
+          description: The text of the trademark
+        status:
+          type: string
+          description: Current status of the trademark
+        statusCode:
+          type: string
+          description: USPTO status code
+        filingDate:
+          type: string
+          format: date
+          description: Date the application was filed
+        registrationDate:
+          type: string
+          format: date
+          nullable: true
+          description: Date the trademark was registered
+        ownerName:
+          type: string
+          description: Name of the trademark owner
+        goodsAndServices:
+          type: string
+          description: Description of goods and services
+        internationalClasses:
+          type: array
+          items:
+            type: integer
+          description: International Nice Classification class numbers
   securitySchemes:
     RapidAPIKey:
       type: apiKey
